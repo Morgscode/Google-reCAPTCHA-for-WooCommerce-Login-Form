@@ -27,7 +27,8 @@
  * @subpackage Recaptcha_For_Wc_Forms/includes
  * @author     Luke Morgan <hello@spaced-web.xyz>
  */
-class Recaptcha_For_Wc_Forms {
+class Recaptcha_For_Wc_Forms
+{
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -66,8 +67,9 @@ class Recaptcha_For_Wc_Forms {
 	 *
 	 * @since    1.0.0
 	 */
-	public function __construct() {
-		if ( defined( 'RECAPTCHA_FOR_WC_FORMS_VERSION' ) ) {
+	public function __construct()
+	{
+		if (defined('RECAPTCHA_FOR_WC_FORMS_VERSION')) {
 			$this->version = RECAPTCHA_FOR_WC_FORMS_VERSION;
 		} else {
 			$this->version = '1.0.0';
@@ -78,7 +80,6 @@ class Recaptcha_For_Wc_Forms {
 		$this->set_locale();
 		$this->define_admin_hooks();
 		$this->define_public_hooks();
-
 	}
 
 	/**
@@ -97,33 +98,33 @@ class Recaptcha_For_Wc_Forms {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function load_dependencies() {
+	private function load_dependencies()
+	{
 
 		/**
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-recaptcha-for-wc-forms-loader.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-recaptcha-for-wc-forms-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-recaptcha-for-wc-forms-i18n.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'includes/class-recaptcha-for-wc-forms-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-recaptcha-for-wc-forms-admin.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'admin/class-recaptcha-for-wc-forms-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-recaptcha-for-wc-forms-public.php';
+		require_once plugin_dir_path(dirname(__FILE__)) . 'public/class-recaptcha-for-wc-forms-public.php';
 
 		$this->loader = new Recaptcha_For_Wc_Forms_Loader();
-
 	}
 
 	/**
@@ -135,12 +136,12 @@ class Recaptcha_For_Wc_Forms {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function set_locale() {
+	private function set_locale()
+	{
 
 		$plugin_i18n = new Recaptcha_For_Wc_Forms_i18n();
 
-		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
-
+		$this->loader->add_action('plugins_loaded', $plugin_i18n, 'load_plugin_textdomain');
 	}
 
 	/**
@@ -150,16 +151,17 @@ class Recaptcha_For_Wc_Forms {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_admin_hooks() {
+	private function define_admin_hooks()
+	{
 
-		$plugin_admin = new Recaptcha_For_Wc_Forms_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Recaptcha_For_Wc_Forms_Admin($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
-		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'lmwd_register_admin_settings', 10 );
-		$this->loader->add_action( 'admin_init', $plugin_admin, 'lmwd_add_admin_settings_fields', 11 );
-		
-		$this->loader->add_filter( 'woocommerce_registration_errors', $plugin_admin, 'lwmd_recaptcha_validation_register_errors', 10, 3 );
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_styles');
+		$this->loader->add_action('admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts');
+		$this->loader->add_action('admin_init', $plugin_admin, 'lmwd_register_admin_settings', 10);
+		$this->loader->add_action('admin_init', $plugin_admin, 'lmwd_add_admin_settings_fields', 11);
+
+		$this->loader->add_filter('woocommerce_registration_errors', $plugin_admin, 'lwmd_recaptcha_validation_register_errors', 10, 3);
 	}
 
 	/**
@@ -169,13 +171,14 @@ class Recaptcha_For_Wc_Forms {
 	 * @since    1.0.0
 	 * @access   private
 	 */
-	private function define_public_hooks() {
+	private function define_public_hooks()
+	{
 
-		$plugin_public = new Recaptcha_For_Wc_Forms_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Recaptcha_For_Wc_Forms_Public($this->get_plugin_name(), $this->get_version());
 
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
-		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
-		$this->loader->add_action( 'woocommerce_after_checkout_registration_form', $plugin_public, 'lmwd_extra_form_fields' );
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
+		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
+		$this->loader->add_action('woocommerce_after_checkout_registration_form', $plugin_public, 'lmwd_output_recaptcha_html');
 	}
 
 	/**
@@ -183,7 +186,8 @@ class Recaptcha_For_Wc_Forms {
 	 *
 	 * @since    1.0.0
 	 */
-	public function run() {
+	public function run()
+	{
 		$this->loader->run();
 	}
 
@@ -194,7 +198,8 @@ class Recaptcha_For_Wc_Forms {
 	 * @since     1.0.0
 	 * @return    string    The name of the plugin.
 	 */
-	public function get_plugin_name() {
+	public function get_plugin_name()
+	{
 		return $this->plugin_name;
 	}
 
@@ -204,7 +209,8 @@ class Recaptcha_For_Wc_Forms {
 	 * @since     1.0.0
 	 * @return    Recaptcha_For_Wc_Forms_Loader    Orchestrates the hooks of the plugin.
 	 */
-	public function get_loader() {
+	public function get_loader()
+	{
 		return $this->loader;
 	}
 
@@ -214,8 +220,8 @@ class Recaptcha_For_Wc_Forms {
 	 * @since     1.0.0
 	 * @return    string    The version number of the plugin.
 	 */
-	public function get_version() {
+	public function get_version()
+	{
 		return $this->version;
 	}
-
 }
