@@ -13,7 +13,7 @@
  * @package           Recaptcha_For_Wc_Forms
  *
  * @wordpress-plugin
- * Plugin Name:       reCAPTCHA v2 checkbox for WooCommerce Registration Form
+ * Plugin Name:       reCAPTCHA v2 checkbox for WC Registration Form
  * Description:       Add a Google reCAPTCHA v2 checkbox with server-side validation to your WooCommerce Registration Form. 
  * Version:           1.0.0
  * Author:            Luke Morgan

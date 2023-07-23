@@ -1,4 +1,4 @@
-# Google reCAPTCHA v2 For WooCommerce Register Form
+Google reCAPTCHA v2 For WooCommerce Register Form
 Contributors: morgscode94
 Tags: reCAPTCHA v2, WooCommerce
 Requires at least: 5.7
@@ -9,8 +9,7 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 
-A m10c plugin that simply adds a Google reCAPTCHA v2 checkbox to your WooCommerce Register form and enforces server-side validation with the reCAPTCHA API
-of the reCAPTCHA field on user registration.
+A m10c plugin that simply adds a Google reCAPTCHA v2 checkbox to your WooCommerce Register form and enforces server-side validation with the reCAPTCHA API of the reCAPTCHA field on user registration.
 
 == Installation ==
 
