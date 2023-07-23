@@ -14,9 +14,9 @@ of the reCAPTCHA field on user registration.
 
 == Installation ==
 
-1. Upload `recaptcha-for-wc-forms.php` to the `/wp-content/plugins/` directory
-2. Activate the plugin through the 'Plugins' menu in WordPress
-3. Enter your Google reCAPTCHA site key and secret key in the plugin settings fields in the settings menu.
+1. Upload this plugin directory to the `/wp-content/plugins/` directory of your website.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Enter your Google reCAPTCHA site key and secret key in the plugin settings fields in the general settings menu.
 
 == Changelog ==
 
