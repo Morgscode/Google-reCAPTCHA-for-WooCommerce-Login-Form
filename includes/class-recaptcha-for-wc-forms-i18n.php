@@ -24,24 +24,21 @@
  * @subpackage Recaptcha_For_Wc_Forms/includes
  * @author     Luke Morgan <hello@spaced-web.xyz>
  */
-class Recaptcha_For_Wc_Forms_i18n {
-
+class Recaptcha_For_Wc_Forms_i18n
+{
 
 	/**
 	 * Load the plugin text domain for translation.
 	 *
 	 * @since    1.0.0
 	 */
-	public function load_plugin_textdomain() {
+	public function load_plugin_textdomain()
+	{
 
 		load_plugin_textdomain(
 			'recaptcha-for-wc-forms',
 			false,
-			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
+			dirname(dirname(plugin_basename(__FILE__))) . '/languages/'
 		);
-
 	}
-
-
-
 }

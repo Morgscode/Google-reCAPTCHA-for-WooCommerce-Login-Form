@@ -13,9 +13,8 @@
  * @package           Recaptcha_For_Wc_Forms
  *
  * @wordpress-plugin
- * Plugin Name:       reCAPTCHA for WooCommerce Registration Form
- * Plugin URI:        https://luke-morgan.com/side-project.html
- * Description:       Add Google reCAPTCHA with server-side validation to your WooCommerce Registration Form. 
+ * Plugin Name:       reCAPTCHA v2 checkbox for WooCommerce Registration Form
+ * Description:       Add a Google reCAPTCHA v2 checkbox with server-side validation to your WooCommerce Registration Form. 
  * Version:           1.0.0
  * Author:            Luke Morgan
  * Author URI:        https://luke-morgan.com
@@ -26,7 +25,7 @@
  */
 
 // If this file is called directly, abort.
-if ( ! defined( 'WPINC' ) ) {
+if (!defined('WPINC')) {
 	die;
 }
 
@@ -35,14 +34,15 @@ if ( ! defined( 'WPINC' ) ) {
  * Start at version 1.0.0 and use SemVer - https://semver.org
  * Rename this for your plugin and update it as you release new versions.
  */
-define( 'RECAPTCHA_FOR_WC_FORMS_VERSION', '1.0.0' );
+define('RECAPTCHA_FOR_WC_FORMS_VERSION', '1.0.0');
 
 /**
  * The code that runs during plugin activation.
  * This action is documented in includes/class-recaptcha-for-wc-forms-activator.php
  */
-function activate_recaptcha_for_wc_forms() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-recaptcha-for-wc-forms-activator.php';
+function activate_recaptcha_for_wc_forms()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-recaptcha-for-wc-forms-activator.php';
 	Recaptcha_For_Wc_Forms_Activator::activate();
 }
 
@@ -50,19 +50,20 @@ function activate_recaptcha_for_wc_forms() {
  * The code that runs during plugin deactivation.
  * This action is documented in includes/class-recaptcha-for-wc-forms-deactivator.php
  */
-function deactivate_recaptcha_for_wc_forms() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-recaptcha-for-wc-forms-deactivator.php';
+function deactivate_recaptcha_for_wc_forms()
+{
+	require_once plugin_dir_path(__FILE__) . 'includes/class-recaptcha-for-wc-forms-deactivator.php';
 	Recaptcha_For_Wc_Forms_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_recaptcha_for_wc_forms' );
-register_deactivation_hook( __FILE__, 'deactivate_recaptcha_for_wc_forms' );
+register_activation_hook(__FILE__, 'activate_recaptcha_for_wc_forms');
+register_deactivation_hook(__FILE__, 'deactivate_recaptcha_for_wc_forms');
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-recaptcha-for-wc-forms.php';
+require plugin_dir_path(__FILE__) . 'includes/class-recaptcha-for-wc-forms.php';
 
 /**
  * Begins execution of the plugin.
@@ -73,10 +74,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-recaptcha-for-wc-forms.php
  *
  * @since    1.0.0
  */
-function run_recaptcha_for_wc_forms() {
+function run_recaptcha_for_wc_forms()
+{
 
 	$plugin = new Recaptcha_For_Wc_Forms();
 	$plugin->run();
-
 }
 run_recaptcha_for_wc_forms();

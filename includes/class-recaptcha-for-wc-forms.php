@@ -178,7 +178,7 @@ class Recaptcha_For_Wc_Forms
 
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_styles');
 		$this->loader->add_action('wp_enqueue_scripts', $plugin_public, 'enqueue_scripts');
-		$this->loader->add_action('woocommerce_after_checkout_registration_form', $plugin_public, 'lmwd_output_recaptcha_html');
+		$this->loader->add_action('woocommerce_register_form', $plugin_public, 'lmwd_output_recaptcha_html');
 	}
 
 	/**

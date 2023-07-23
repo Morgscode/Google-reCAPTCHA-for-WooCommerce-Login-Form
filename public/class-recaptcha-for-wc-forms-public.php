@@ -20,7 +20,8 @@
  * @subpackage Recaptcha_For_Wc_Forms/public
  * @author     Luke Morgan <hello@spaced-web.xyz>
  */
-class Recaptcha_For_Wc_Forms_Public {
+class Recaptcha_For_Wc_Forms_Public
+{
 
 	/**
 	 * The ID of this plugin.
@@ -47,11 +48,11 @@ class Recaptcha_For_Wc_Forms_Public {
 	 * @param      string    $plugin_name       The name of the plugin.
 	 * @param      string    $version    The version of this plugin.
 	 */
-	public function __construct( $plugin_name, $version ) {
+	public function __construct($plugin_name, $version)
+	{
 
 		$this->plugin_name = $plugin_name;
 		$this->version = $version;
-
 	}
 
 	/**
@@ -59,7 +60,8 @@ class Recaptcha_For_Wc_Forms_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_styles() {
+	public function enqueue_styles()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -73,8 +75,7 @@ class Recaptcha_For_Wc_Forms_Public {
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/recaptcha-for-wc-forms-public.css', array(), $this->version, 'all' );
-
+		wp_enqueue_style($this->plugin_name, plugin_dir_url(__FILE__) . 'css/recaptcha-for-wc-forms-public.css', array(), $this->version, 'all');
 	}
 
 	/**
@@ -82,7 +83,8 @@ class Recaptcha_For_Wc_Forms_Public {
 	 *
 	 * @since    1.0.0
 	 */
-	public function enqueue_scripts() {
+	public function enqueue_scripts()
+	{
 
 		/**
 		 * This function is provided for demonstration purposes only.
@@ -96,21 +98,19 @@ class Recaptcha_For_Wc_Forms_Public {
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/recaptcha-for-wc-forms-public.js', array( 'jquery' ), $this->version, false );
-
+		wp_enqueue_script($this->plugin_name, plugin_dir_url(__FILE__) . 'js/recaptcha-for-wc-forms-public.js', array('jquery'), $this->version, false);
+		wp_enqueue_script('lmwd-google-reCAPTCHA-js', 'https://www.google.com/recaptcha/api.js');
 	}
 
 	public final function lmwd_output_recaptcha_html()
-    {
-        if (is_checkout()) : 
-			$key = get_option('lmwd_recaptcha_site_key');
-		?>
-            <div class="recaptcha-group">
-                <div class="recaptcha-msg"></div>
-                <div class="g-recaptcha js-recaptcha-el" data-sitekey="<?php echo esc_attr($key); ?>"></div>
-            </div>
-        <?php
-        endif;
-    }
-
+	{
+		$key = get_option('lmwd_recaptcha_site_key');
+		if ($key) : ?>
+			<div class="recaptcha-group">
+				<div class="recaptcha-msg"></div>
+				<div class="g-recaptcha js-recaptcha-el" data-sitekey="<?php echo esc_attr($key); ?>"></div>
+			</div>
+<?php
+		endif;
+	}
 }
