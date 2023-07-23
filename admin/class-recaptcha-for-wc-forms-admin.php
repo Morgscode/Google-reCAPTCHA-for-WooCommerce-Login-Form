@@ -161,7 +161,7 @@ class Recaptcha_For_Wc_Forms_Admin
 	{
 		$key = get_option('lmwd_recaptcha_site_key');
 ?>
-		<input type="text" name="lmwd_recaptcha_site_key" id="lmwd_recaptcha_site_key" value="<?php echo esc_attr($key); ?>" />
+		<input type="password" name="lmwd_recaptcha_site_key" id="lmwd_recaptcha_site_key" value="<?php echo esc_attr($key); ?>" />
 	<?php
 	}
 
@@ -169,7 +169,7 @@ class Recaptcha_For_Wc_Forms_Admin
 	{
 		$key = get_option('lmwd_recaptcha_secret_key');
 	?>
-		<input type="text" name="lmwd_recaptcha_secret_key" id="lmwd_recaptcha_secret_key" value="<?php echo esc_attr($key); ?>" />
+		<input type="password" name="lmwd_recaptcha_secret_key" id="lmwd_recaptcha_secret_key" value="<?php echo esc_attr($key); ?>" />
 <?php
 	}
 }
